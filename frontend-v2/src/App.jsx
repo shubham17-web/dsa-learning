@@ -6,11 +6,7 @@ import Dashboard from './pages/Dashboard';
 import ProblemsPage from './pages/ProblemsPage';
 import ProblemDetailPage from './pages/ProblemDetailPage';
 
-const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
-  if (!token) return <Navigate to="/auth" />;
-  return <Layout>{children}</Layout>;
-};
+
 
 function App() {
   return (
@@ -19,21 +15,15 @@ function App() {
         <Routes>
           
           <Route path="/" element={
-            <ProtectedRoute>
               <Dashboard />
-            </ProtectedRoute>
           } />
           
           <Route path="/problems" element={
-            <ProtectedRoute>
               <ProblemsPage />
-            </ProtectedRoute>
           } />
           
           <Route path="/problems/:slug" element={
-            <ProtectedRoute>
               <ProblemDetailPage />
-            </ProtectedRoute>
           } />
           
           {/* Fallback */}
