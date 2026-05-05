@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — CPP·DSA Platform</title>
+  <meta name="description" content="Get in touch with the CPP·DSA Platform team. We'd love to hear your questions, feedback, or collaboration ideas." />
+  
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { base:'#ffffff', surface:'#f8f9fa', border:'#e0e0e0', sky:'#0f9d58', indigo:'#2f8d46', muted:'#666666', subtle:'#999999' },
+          fontFamily: { display:['Arial','Helvetica','sans-serif'], sans:['Arial','Helvetica','sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { background:#ffffff; font-family:Arial,Helvetica,sans-serif; }
+    .gradient-text { color:#0f9d58; font-weight:bold; }
+    .nav-link { position:relative; }
+    .nav-link.active { border-bottom:2px solid #0f9d58; color:#0f9d58 !important; }
+    .code-block { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 12px; font-family: monospace; font-size: 13px; line-height: 1.7; overflow-x: auto; }
+    .kw  { color: #0000ff; }
+    .ty  { color: #2f8d46; }
+    .fn  { color: #795e26; }
+    .cm  { color: #008000; }
+    .str { color: #a31515; }
+    .num { color: #098658; }
+    
+    /* Form styles for contact */
+    .form-field {
+      width:100%;
+      background:#ffffff;
+      border:1px solid #e0e0e0;
+      border-radius:12px;
+      color:#333333;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:14px;
+      padding:13px 16px;
+      outline:none;
+      transition:border-color .2s;
+    }
+    .form-field:focus {
+      border-color:#0f9d58;
+    }
+    .form-field::placeholder { color:#999999; }
+    select.form-field option { background:#ffffff; }
+    #success-msg { display:none; }
+    .btn-loading .btn-text { display:none; }
+    .btn-loading .btn-loader { display:flex !important; }
+  
+    .btn-primary {
+      background: #0f9d58;
+      color: #ffffff !important;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      filter: saturate(0.7) brightness(1.15);
+    }
+  </style>
+</head>
+
+<body class="text-slate-800 antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 border-b border-border/60  bg-white border-b border-gray-200">
+    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5" id="nav-logo">
+        <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-lg shadow-sm border border-gray-200">
+        <span class="font-display font-700 text-lg text-slate-900">CPP<span class="gradient-text">·DSA</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="index.html"   class="nav-link text-muted hover:text-slate-900 transition-colors" id="nav-home">Home</a></li>
+        <li><a href="about.html"   class="nav-link text-muted hover:text-slate-900 transition-colors" id="nav-about">About Us</a></li>
+        <li><a href="contact.html" class="nav-link active text-sky" id="nav-contact">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="index.html#modules" class="text-sm font-semibold px-4 py-2 rounded-lg btn-primary " id="nav-cta">Explore Modules</a>
+        <button id="mobile-menu-btn" class="md:hidden text-muted hover:text-slate-900" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden border-t border-border/40 bg-surface px-6 pb-4">
+      <ul class="flex flex-col gap-3 pt-4 text-sm font-medium">
+        <li><a href="index.html"   class="block text-muted hover:text-slate-900" id="mob-home">Home</a></li>
+        <li><a href="about.html"   class="block text-muted hover:text-slate-900" id="mob-about">About Us</a></li>
+        <li><a href="contact.html" class="block text-sky" id="mob-contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative  py-24 overflow-hidden">
+    
+    <div class="max-w-4xl mx-auto px-6 text-center relative">
+      <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-sky bg-sky/10 border border-sky/20 rounded-full px-4 py-1.5 mb-6">
+        Get In Touch
+      </div>
+      <h1 class="font-display text-5xl lg:text-6xl font-800 text-slate-900 leading-tight mb-6">
+        We'd Love to <span class="gradient-text">Hear</span><br/>From You
+      </h1>
+      <p class="text-muted text-lg leading-relaxed max-w-2xl mx-auto">
+        Have a question about a C++ concept, feedback on our modules, or a collaboration idea? Drop us a message and we'll get back to you within 24 hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT SECTION -->
+  <section class="py-16 border-t border-border/40">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-5 gap-12">
+
+        <!-- Left: Contact Info -->
+        <div class="lg:col-span-2 flex flex-col gap-8">
+          <div>
+            <h2 class="font-display text-3xl font-700 text-slate-900 mb-4">Contact Information</h2>
+            <p class="text-muted text-sm leading-relaxed">Reach out through the form or via any of the channels below. We're a small team — you're talking to real engineers.</p>
+          </div>
+
+          <!-- Info cards -->
+          <div class="flex flex-col gap-5">
+            <div class="flex items-start gap-4 p-5 bg-surface border border-border rounded-xl" id="contact-email-card">
+              <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-sky/10 border border-sky/20 flex items-center justify-center text-sky">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 mb-0.5">Email</div>
+                <div class="text-muted text-sm">hello@cppdsa.dev</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-5 bg-surface border border-border rounded-xl" id="contact-location-card">
+              <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-indigo/10 border border-indigo/20 flex items-center justify-center text-indigo">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 mb-0.5">Location</div>
+                <div class="text-muted text-sm">123 Algorithm Ave, Tech Park,<br/>Bangalore, India 560001</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-5 bg-surface border border-border rounded-xl" id="contact-hours-card">
+              <div class="w-10 h-10 flex-shrink-0 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-slate-900 mb-0.5">Response Time</div>
+                <div class="text-muted text-sm">Within 24 hours on business days.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social links -->
+          <div>
+            <div class="text-sm font-semibold text-slate-900 mb-3">Follow Us</div>
+            <div class="flex gap-3">
+              <a href="#" id="social-github" class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-muted hover:text-slate-900 hover:border-sky transition-all" aria-label="GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+              <a href="#" id="social-twitter" class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-muted hover:text-slate-900 hover:border-sky transition-all" aria-label="Twitter/X">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" id="social-linkedin" class="w-10 h-10 rounded-lg bg-surface border border-border flex items-center justify-center text-muted hover:text-slate-900 hover:border-sky transition-all" aria-label="LinkedIn">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="lg:col-span-3">
+          <div class="p-8 bg-surface border border-border rounded-2xl">
+            <!-- Success message -->
+            <div id="success-msg" class="mb-6 p-4 rounded-xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-sm flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Message sent! We'll get back to you within 24 hours.
+            </div>
+
+            <form id="contact-form" novalidate>
+              <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <!-- Full Name -->
+                <div>
+                  <label for="full-name" class="block text-sm font-medium text-slate-700 mb-2">Full Name <span class="text-sky">*</span></label>
+                  <input
+                    type="text"
+                    id="full-name"
+                    name="full_name"
+                    class="form-field"
+                    placeholder="e.g. Priya Sharma"
+                    autocomplete="name"
+                    required
+                  />
+                  <p id="err-name" class="mt-1.5 text-xs text-red-400 hidden">Please enter your name.</p>
+                </div>
+                <!-- Email -->
+                <div>
+                  <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address <span class="text-sky">*</span></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-field"
+                    placeholder="e.g. priya@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                  <p id="err-email" class="mt-1.5 text-xs text-red-400 hidden">Please enter a valid email.</p>
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div class="mb-5">
+                <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Subject <span class="text-sky">*</span></label>
+                <select id="subject" name="subject" class="form-field" required>
+                  <option value="" disabled selected>Select a topic…</option>
+                  <option value="general">General Question</option>
+                  <option value="cpp_help">C++ / DSA Help</option>
+                  <option value="feedback">Platform Feedback</option>
+                  <option value="bug">Bug Report</option>
+                  <option value="collaboration">Collaboration / Partnership</option>
+                  <option value="other">Other</option>
+                </select>
+                <p id="err-subject" class="mt-1.5 text-xs text-red-400 hidden">Please select a subject.</p>
+              </div>
+
+              <!-- Message -->
+              <div class="mb-7">
+                <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message <span class="text-sky">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  class="form-field"
+                  placeholder="Describe your question or feedback in detail…"
+                  required
+                ></textarea>
+                <p id="err-message" class="mt-1.5 text-xs text-red-400 hidden">Please enter your message (min 10 chars).</p>
+              </div>
+
+              <!-- Submit -->
+              <button
+                type="submit"
+                id="contact-submit"
+                class="w-full py-3.5 rounded-xl font-semibold text-sm btn-primary  flex items-center justify-center gap-2"
+              >
+                <span class="btn-text">Send Message →</span>
+                <span class="btn-loader items-center gap-2 hidden">
+                  <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                  </svg>
+                  Sending…
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ STRIP -->
+  <section class="py-20 border-t border-border/40">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-3xl font-700 text-slate-900 mb-3">Frequently Asked</h2>
+        <p class="text-muted text-sm">Quick answers to common questions.</p>
+      </div>
+      <div class="flex flex-col gap-4" id="faq-container">
+        <!-- FAQ items generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border/40 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-gradient-to-br from-sky to-indigo flex items-center justify-center text-slate-900 text-xs font-bold">C+</div>
+        <span>CPP·DSA Platform &copy; 2025</span>
+      </div>
+      <ul class="flex gap-6">
+        <li><a href="index.html"   class="hover:text-slate-900 transition-colors">Home</a></li>
+        <li><a href="about.html"   class="hover:text-slate-900 transition-colors">About</a></li>
+        <li><a href="contact.html" class="hover:text-slate-900 transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Form validation & submit
+    const form    = document.getElementById('contact-form');
+    const btn     = document.getElementById('contact-submit');
+    const success = document.getElementById('success-msg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name    = document.getElementById('full-name');
+      const email   = document.getElementById('email');
+      const subject = document.getElementById('subject');
+      const message = document.getElementById('message');
+
+      let valid = true;
+
+      const setError = (el, errId, show) => {
+        document.getElementById(errId).classList.toggle('hidden', !show);
+        el.style.borderColor = show ? '#f87171' : '#334155';
+        if (show) valid = false;
+      };
+
+      setError(name,    'err-name',    !name.value.trim());
+      setError(email,   'err-email',   !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value));
+      setError(subject, 'err-subject', !subject.value);
+      setError(message, 'err-message', message.value.trim().length < 10);
+
+      if (!valid) return;
+
+      // Simulate async send
+      btn.classList.add('btn-loading');
+      setTimeout(() => {
+        btn.classList.remove('btn-loading');
+        success.style.display = 'flex';
+        form.reset();
+        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 1600);
+    });
+
+    // FAQ accordion
+    const faqs = [
+      { q:'Is the platform free to use?',            a:'Yes! All core modules and problems are completely free. We believe quality DSA education should be accessible to everyone.' },
+      { q:'Why is everything in C++?',               a:'C++ forces you to understand memory management, pointers, and performance — giving you deeper algorithmic intuition than higher-level languages.' },
+      { q:'Can I use the AI tutor without an account?', a:'Yes. The AI widget is available on all pages. Creating an account unlocks progress tracking and personalised recommendations.' },
+      { q:'How do I report a bug or incorrect solution?', a:'Use the contact form above with the "Bug Report" subject, or open an issue on our GitHub repository. We review all reports within 48 hours.' },
+    ];
+
+    const faqContainer = document.getElementById('faq-container');
+    faqs.forEach((faq, i) => {
+      faqContainer.innerHTML += `
+        <div class="border border-border rounded-xl overflow-hidden" id="faq-item-${i}">
+          <button
+            class="w-full text-left px-6 py-4 flex items-center justify-between text-sm font-medium text-slate-800 hover:bg-surface transition-colors"
+            aria-expanded="false"
+            onclick="toggleFaq(${i}, this)"
+            id="faq-btn-${i}"
+          >
+            ${faq.q}
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq-body-${i}" class="hidden px-6 pb-5 text-muted text-sm leading-relaxed border-t border-border/50 pt-4">
+            ${faq.a}
+          </div>
+        </div>`;
+    });
+
+    function toggleFaq(i, btn) {
+      const body = document.getElementById(`faq-body-${i}`);
+      const icon = btn.querySelector('svg');
+      const open = body.classList.toggle('hidden');
+      icon.style.transform = open ? '' : 'rotate(180deg)';
+      btn.setAttribute('aria-expanded', String(!open));
+    }
+  </script>
+
+  <script src="widget.js"></script>
+</body>
+</html>

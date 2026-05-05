@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — CPP·DSA Platform</title>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { base:'#ffffff', surface:'#f8f9fa', border:'#e0e0e0', sky:'#0f9d58', indigo:'#2f8d46', muted:'#666666', subtle:'#999999' },
+          fontFamily: { display:['Arial','Helvetica','sans-serif'], sans:['Arial','Helvetica','sans-serif'] },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background:#ffffff; font-family:Arial,Helvetica,sans-serif; }
+    .gradient-text { color:#0f9d58; font-weight:bold; }
+    .btn-primary {
+      background: #0f9d58;
+      color: #ffffff !important;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      filter: saturate(0.7) brightness(1.15);
+    }
+    .progress-bar { height: 12px; border-radius: 6px; background: #e0e0e0; overflow: hidden; position: relative; }
+    .progress-fill { height: 100%; background: #0f9d58; transition: width 0.8s ease-in-out; }
+  </style>
+</head>
+
+<body class="text-slate-800 antialiased bg-slate-50/30">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 border-b border-border/60 bg-white">
+    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-lg">
+        <span class="font-display font-bold text-lg text-slate-900">CPP<span class="gradient-text">·DSA</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="index.html" class="text-muted hover:text-slate-900">Home</a></li>
+        <li><a href="dashboard.html" class="text-sky font-bold">Dashboard</a></li>
+        <li><a href="about.html" class="text-muted hover:text-slate-900">About</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <button id="reset-progress" class="text-xs text-red-400 hover:underline">Reset Progress</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    
+    <!-- WELCOME SECTION -->
+    <section class="mb-12">
+      <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome, C++ Master 👋</h1>
+      <p class="text-muted">Consistency is the key to mastering algorithms. Keep pushing!</p>
+    </section>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      
+      <!-- OVERALL PROGRESS CARD -->
+      <div class="lg:col-span-1 flex flex-col gap-6">
+        <div class="bg-white border border-border p-8 rounded-2xl shadow-sm">
+          <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-6">Overall Progress</h2>
+          <div class="flex items-end justify-between mb-2">
+            <span id="progress-text" class="text-4xl font-bold text-slate-900">0/8</span>
+            <span id="progress-percent" class="text-sm font-bold text-sky">0%</span>
+          </div>
+          <div class="progress-bar mb-4">
+            <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            Finish all modules to earn your DSA Master badge and prepare for interviews.
+          </p>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="bg-white border border-border p-8 rounded-2xl shadow-sm">
+          <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Quick Actions</h2>
+          <div class="flex flex-col gap-3">
+            <a href="index.html#modules" class="w-full btn-primary py-3 rounded-xl text-center font-bold text-sm">Resume Learning</a>
+            <a href="index.html#modules" class="w-full border border-border py-3 rounded-xl text-center font-bold text-sm hover:bg-slate-50">Practice Problems</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULES LIST SECTION -->
+      <div class="lg:col-span-2">
+        <div class="bg-white border border-border p-8 rounded-2xl shadow-sm">
+          <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-8">Curriculum Status</h2>
+          
+          <div class="grid sm:grid-cols-2 gap-4" id="dashboard-modules-grid">
+            <!-- Dynamic cards go here -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    const moduleSlugs = [
+      'arrays-strings', 'linked-lists', 'stacks-queues', 'trees-bst', 
+      'graphs', 'dynamic-programming', 'sorting-searching', 'heaps-hashing'
+    ];
+
+    const moduleNames = {
+      'arrays-strings': 'Arrays & Strings',
+      'linked-lists': 'Linked Lists',
+      'stacks-queues': 'Stacks & Queues',
+      'trees-bst': 'Trees & BST',
+      'graphs': 'Graphs',
+      'dynamic-programming': 'Dynamic Programming',
+      'sorting-searching': 'Sorting & Searching',
+      'heaps-hashing': 'Heaps & Hashing'
+    };
+
+    function updateDashboard() {
+      const grid = document.getElementById('dashboard-modules-grid');
+      let completedCount = 0;
+
+      grid.innerHTML = '';
+
+      moduleSlugs.forEach(slug => {
+        const isCompleted = localStorage.getItem(`module_${slug}`) === 'true';
+        if (isCompleted) completedCount++;
+
+        grid.innerHTML += `
+          <div class="p-5 border ${isCompleted ? 'border-sky/30 bg-sky/5' : 'border-border bg-slate-50/50'} rounded-xl flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">${moduleNames[slug]}</h3>
+              <p class="text-[10px] text-muted uppercase mt-1 tracking-tight">
+                ${isCompleted ? '⭐ Mastery Achieved' : '📖 In Progress'}
+              </p>
+            </div>
+            <div>
+              ${isCompleted 
+                ? '<span class="flex items-center gap-1.5 text-xs font-bold text-sky bg-sky/10 px-3 py-1 rounded-full"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Completed</span>'
+                : '<span class="text-xs font-bold text-subtle bg-slate-100 px-3 py-1 rounded-full">Pending</span>'
+              }
+            </div>
+          </div>
+        `;
+      });
+
+      // Update Overall Stats
+      const percent = Math.round((completedCount / moduleSlugs.length) * 100);
+      document.getElementById('progress-text').innerText = `${completedCount}/${moduleSlugs.length}`;
+      document.getElementById('progress-percent').innerText = `${percent}%`;
+      document.getElementById('progress-fill').style.width = `${percent}%`;
+    }
+
+    // Reset Progress helper
+    document.getElementById('reset-progress').addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset all your progress?')) {
+        moduleSlugs.forEach(slug => localStorage.removeItem(`module_${slug}`));
+        updateDashboard();
+      }
+    });
+
+    // Initial load
+    updateDashboard();
+  </script>
+</body>
+</html>

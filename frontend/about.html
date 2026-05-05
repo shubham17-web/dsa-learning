@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — CPP·DSA Platform</title>
+  <meta name="description" content="Learn about the CPP·DSA Platform's vision of empowering the next generation of engineers through C++ and Data Structures education." />
+  
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { base:'#ffffff', surface:'#f8f9fa', border:'#e0e0e0', sky:'#0f9d58', indigo:'#2f8d46', muted:'#666666', subtle:'#999999' },
+          fontFamily: { display:['Arial','Helvetica','sans-serif'], sans:['Arial','Helvetica','sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { background:#ffffff; font-family:Arial,Helvetica,sans-serif; }
+    .gradient-text { color:#0f9d58; font-weight:bold; }
+    .nav-link { position:relative; }
+    .nav-link.active { border-bottom:2px solid #0f9d58; color:#0f9d58 !important; }
+    .code-block { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 12px; font-family: monospace; font-size: 13px; line-height: 1.7; overflow-x: auto; }
+    .kw  { color: #0000ff; }
+    .ty  { color: #2f8d46; }
+    .fn  { color: #795e26; }
+    .cm  { color: #008000; }
+    .str { color: #a31515; }
+    .num { color: #098658; }
+    
+    /* Form styles for contact */
+    .form-field {
+      width:100%;
+      background:#ffffff;
+      border:1px solid #e0e0e0;
+      border-radius:12px;
+      color:#333333;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:14px;
+      padding:13px 16px;
+      outline:none;
+      transition:border-color .2s;
+    }
+    .form-field:focus {
+      border-color:#0f9d58;
+    }
+    .form-field::placeholder { color:#999999; }
+    select.form-field option { background:#ffffff; }
+    #success-msg { display:none; }
+    .btn-loading .btn-text { display:none; }
+    .btn-loading .btn-loader { display:flex !important; }
+  
+    .btn-primary {
+      background: #0f9d58;
+      color: #ffffff !important;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      filter: saturate(0.7) brightness(1.15);
+    }
+  </style>
+</head>
+
+<body class="text-slate-800 antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 border-b border-border/60  bg-white border-b border-gray-200">
+    <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5" id="nav-logo">
+        <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-lg shadow-sm border border-gray-200">
+        <span class="font-display font-700 text-lg text-slate-900">CPP<span class="gradient-text">·DSA</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="index.html"   class="nav-link text-muted hover:text-slate-900 transition-colors" id="nav-home">Home</a></li>
+        <li><a href="about.html"   class="nav-link active text-sky" id="nav-about">About Us</a></li>
+        <li><a href="contact.html" class="nav-link text-muted hover:text-slate-900 transition-colors" id="nav-contact">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="index.html#modules" class="text-sm font-semibold px-4 py-2 rounded-lg btn-primary " id="nav-cta">Explore Modules</a>
+        <button id="mobile-menu-btn" class="md:hidden text-muted hover:text-slate-900" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden border-t border-border/40 bg-surface px-6 pb-4">
+      <ul class="flex flex-col gap-3 pt-4 text-sm font-medium">
+        <li><a href="index.html"   class="block text-muted hover:text-slate-900" id="mob-home">Home</a></li>
+        <li><a href="about.html"   class="block text-sky" id="mob-about">About Us</a></li>
+        <li><a href="contact.html" class="block text-muted hover:text-slate-900" id="mob-contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative  py-28 overflow-hidden">
+    
+    <div class="max-w-4xl mx-auto px-6 text-center relative">
+      <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-indigo bg-indigo/10 border border-indigo/20 rounded-full px-4 py-1.5 mb-6">
+        Our Story
+      </div>
+      <h1 class="font-display text-5xl lg:text-6xl font-800 text-slate-900 leading-tight mb-6">
+        Empowering the<br/><span class="gradient-text">Next Generation</span><br/>of Engineers
+      </h1>
+      <p class="text-muted text-lg leading-relaxed max-w-2xl mx-auto">
+        CPP·DSA was built by engineers who know that mastering data structures and algorithms in C++ is the single highest-leverage skill you can develop for a software career.
+      </p>
+    </div>
+  </section>
+
+  <!-- VISION / MISSION GRID -->
+  <section class="py-24 border-t border-border/40">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Graphic placeholder -->
+        <div class="graphic-placeholder rounded-2xl border border-border flex items-center justify-center min-h-[340px] relative overflow-hidden" id="about-visual-vision">
+          <div class="absolute inset-0 flex items-center justify-center flex-col gap-4 text-muted">
+            <div class="text-7xl opacity-30">🎯</div>
+            <div class="text-sm font-semibold tracking-wide opacity-50 uppercase">Platform Vision</div>
+            <!-- Decorative circles -->
+            <div class="absolute w-48 h-48 rounded-full border border-sky/10 top-4 right-4"></div>
+            <div class="absolute w-32 h-32 rounded-full border border-indigo/10 bottom-6 left-6"></div>
+            <div class="absolute w-20 h-20 rounded-full bg-sky/5 top-1/2 left-1/4"></div>
+          </div>
+        </div>
+        <!-- Text -->
+        <div>
+          <h2 class="font-display text-4xl font-700 text-slate-900 mb-6">Our Vision</h2>
+          <p class="text-muted leading-relaxed mb-5">
+            We believe every developer — regardless of their background — deserves a structured, free, and deeply technical path to mastering algorithms and data structures.
+          </p>
+          <p class="text-muted leading-relaxed mb-8">
+            C++ was chosen deliberately. It forces you to think about memory, pointers, and performance — the very concepts that separate engineers who "know algorithms" from those who truly <em class="text-slate-700 not-italic">understand</em> them.
+          </p>
+          <div class="flex flex-col gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 mt-0.5 rounded-full bg-sky/10 border border-sky/30 flex items-center justify-center text-sky text-xs flex-shrink-0">✓</div>
+              <p class="text-muted text-sm">Interview-proven problem sets curated by ex-FAANG engineers.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 mt-0.5 rounded-full bg-sky/10 border border-sky/30 flex items-center justify-center text-sky text-xs flex-shrink-0">✓</div>
+              <p class="text-muted text-sm">AI tutor that explains C++ code line-by-line without spoiling answers.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 mt-0.5 rounded-full bg-sky/10 border border-sky/30 flex items-center justify-center text-sky text-xs flex-shrink-0">✓</div>
+              <p class="text-muted text-sm">Progress tracking from your very first problem to advanced DP.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES GRID -->
+  <section class="py-24 border-t border-border/40">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl font-700 text-slate-900 mb-4">What We Stand For</h2>
+        <p class="text-muted max-w-xl mx-auto">The principles that drive every decision we make.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Value cards -->
+        <div class="p-7 bg-surface border border-border rounded-2xl " id="value-depth">
+          <div class="text-3xl mb-4">🧠</div>
+          <h3 class="font-display text-xl font-700 text-slate-900 mb-2">Depth Over Breadth</h3>
+          <p class="text-muted text-sm leading-relaxed">We teach you to truly understand algorithms, not memorize solutions. Real intuition beats surface knowledge every time.</p>
+        </div>
+        <div class="p-7 bg-surface border border-border rounded-2xl " id="value-cpp">
+          <div class="text-3xl mb-4">⚙️</div>
+          <h3 class="font-display text-xl font-700 text-slate-900 mb-2">C++ First</h3>
+          <p class="text-muted text-sm leading-relaxed">Low-level mastery builds confidence. When you can implement a linked list with raw pointers, Python abstractions hold no mysteries.</p>
+        </div>
+        <div class="p-7 bg-surface border border-border rounded-2xl " id="value-hints">
+          <div class="text-3xl mb-4">💡</div>
+          <h3 class="font-display text-xl font-700 text-slate-900 mb-2">Hints, Not Answers</h3>
+          <p class="text-muted text-sm leading-relaxed">Our AI tutor is constrained by design. It nudges you toward the solution; you earn the "aha!" moment yourself.</p>
+        </div>
+        <div class="p-7 bg-surface border border-border rounded-2xl " id="value-open">
+          <div class="text-3xl mb-4">🌐</div>
+          <h3 class="font-display text-xl font-700 text-slate-900 mb-2">Open Access</h3>
+          <p class="text-muted text-sm leading-relaxed">Great engineering education shouldn't be locked behind paywalls. Our core modules are free, forever.</p>
+        </div>
+        <div class="p-7 bg-surface border border-border rounded-2xl " id="value-community">
+          <div class="text-3xl mb-4">🤝</div>
+          <h3 class="font-display text-xl font-700 text-slate-900 mb-2">Community Driven</h3>
+          <p class="text-muted text-sm leading-relaxed">Problems, hints, and explanations are refined by a community of learners and contributors around the world.</p>
+        </div>
+        <div class="p-7 bg-surface border border-border rounded-2xl " id="value-rigor">
+          <div class="text-3xl mb-4">📐</div>
+          <h3 class="font-display text-xl font-700 text-slate-900 mb-2">Rigorous Complexity</h3>
+          <p class="text-muted text-sm leading-relaxed">Every problem ships with Big-O time and space analysis. You always know <em class="text-slate-700 not-italic">why</em> an algorithm performs the way it does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PLACEHOLDER GRID -->
+  <section class="py-24 border-t border-border/40">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl font-700 text-slate-900 mb-4">The Team</h2>
+        <p class="text-muted max-w-xl mx-auto">Engineers, educators, and designers building the platform we wished existed when we were learning.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Team member placeholders -->
+        <div class="flex flex-col items-center gap-4 p-6 bg-surface border border-border rounded-2xl " id="team-member-1">
+          <div class="graphic-placeholder w-20 h-20 rounded-full border-2 border-sky/30 flex items-center justify-center text-3xl">👨‍💻</div>
+          <div class="text-center">
+            <div class="font-semibold text-slate-900">Arjun Mehta</div>
+            <div class="text-xs text-sky mt-1">Founder · Ex-Google SWE</div>
+            <div class="text-xs text-muted mt-2">Competitive programmer, C++ enthusiast, 10yr industry veteran.</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-4 p-6 bg-surface border border-border rounded-2xl " id="team-member-2">
+          <div class="graphic-placeholder w-20 h-20 rounded-full border-2 border-indigo/30 flex items-center justify-center text-3xl">👩‍💻</div>
+          <div class="text-center">
+            <div class="font-semibold text-slate-900">Priya Sharma</div>
+            <div class="text-xs text-indigo mt-1">Lead Engineer · Ex-Meta</div>
+            <div class="text-xs text-muted mt-2">Systems expert, open-source contributor, algorithms author.</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-4 p-6 bg-surface border border-border rounded-2xl " id="team-member-3">
+          <div class="graphic-placeholder w-20 h-20 rounded-full border-2 border-emerald-400/30 flex items-center justify-center text-3xl">🧑‍🎨</div>
+          <div class="text-center">
+            <div class="font-semibold text-slate-900">Daniel Cruz</div>
+            <div class="text-xs text-emerald-400 mt-1">UI/UX Designer</div>
+            <div class="text-xs text-muted mt-2">Crafts developer-first interfaces that make learning feel effortless.</div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-4 p-6 bg-surface border border-border rounded-2xl " id="team-member-4">
+          <div class="graphic-placeholder w-20 h-20 rounded-full border-2 border-pink-400/30 flex items-center justify-center text-3xl">👩‍🏫</div>
+          <div class="text-center">
+            <div class="font-semibold text-slate-900">Mei Lin</div>
+            <div class="text-xs text-pink-400 mt-1">AI/ML Lead</div>
+            <div class="text-xs text-muted mt-2">Fine-tunes the AI tutor to be genuinely helpful without spoiling the journey.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border/40 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-gradient-to-br from-sky to-indigo flex items-center justify-center text-slate-900 text-xs font-bold">C+</div>
+        <span>CPP·DSA Platform &copy; 2025</span>
+      </div>
+      <ul class="flex gap-6">
+        <li><a href="index.html"   class="hover:text-slate-900 transition-colors">Home</a></li>
+        <li><a href="about.html"   class="hover:text-slate-900 transition-colors">About</a></li>
+        <li><a href="contact.html" class="hover:text-slate-900 transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  <script src="widget.js"></script>
+</body>
+</html>
